@@ -1,0 +1,551 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Trash Collector Game marketing site design system.
+ * Theme derived from the game art: night sky navy, grass green, coin gold.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --font-display: "Pixelify Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Silkscreen", ui-monospace, monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sky: var(--sky);
+  --color-sky-deep: var(--sky-deep);
+  --color-dirt: var(--dirt);
+  --color-gold: var(--gold);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+}
+
+:root {
+  --radius: 0.25rem;
+  --background: oklch(0.19 0.045 265);
+  --foreground: oklch(0.96 0.01 240);
+  --surface: oklch(0.245 0.045 264);
+  --surface-2: oklch(0.29 0.045 264);
+  --card: oklch(0.245 0.045 264);
+  --card-foreground: oklch(0.96 0.01 240);
+  --popover: oklch(0.245 0.045 264);
+  --popover-foreground: oklch(0.96 0.01 240);
+  --primary: oklch(0.72 0.19 143);
+  --primary-foreground: oklch(0.17 0.05 150);
+  --secondary: oklch(0.32 0.05 264);
+  --secondary-foreground: oklch(0.96 0.01 240);
+  --muted: oklch(0.29 0.04 264);
+  --muted-foreground: oklch(0.73 0.03 255);
+  --accent: oklch(0.84 0.16 88);
+  --accent-foreground: oklch(0.2 0.06 70);
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: oklch(0.97 0.01 240);
+  --border: oklch(0.36 0.05 264);
+  --input: oklch(0.36 0.05 264);
+  --ring: oklch(0.72 0.19 143);
+  --sky: oklch(0.79 0.11 232);
+  --sky-deep: oklch(0.28 0.07 268);
+  --dirt: oklch(0.44 0.07 62);
+  --gold: oklch(0.84 0.16 88);
+
+  /* Shared easing curves for the interactive/motion layer below.
+     Expo-out reads as smooth, premium "motion.dev"-style settle.
+     Spring overshoots slightly for a lively, game-like pop. */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+    width: 100%;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+  }
+
+  img {
+    image-rendering: pixelated;
+  }
+
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+
+  /* Consistent, visible keyboard focus everywhere instead of the browser default,
+     so interactive elements stay accessible without breaking the pixel aesthetic. */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+}
+
+/* Chunky pixel-styled border block */
+@utility pixel-box {
+  position: relative;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  box-shadow:
+    4px 4px 0 0 oklch(0.14 0.04 265),
+    inset 0 1px 0 0 oklch(1 0 0 / 6%);
+}
+
+@utility pixel-box-lift {
+  transition:
+    transform 260ms var(--ease-out-expo),
+    box-shadow 260ms var(--ease-out-expo),
+    border-color 200ms ease;
+  will-change: transform;
+  &:hover {
+    transform: translate(-4px, -4px);
+    border-color: var(--color-primary);
+    box-shadow:
+      8px 8px 0 0 oklch(0.14 0.04 265),
+      0 20px 44px -20px oklch(0.72 0.19 143 / 50%),
+      inset 0 1px 0 0 oklch(1 0 0 / 8%);
+  }
+  &:active {
+    transform: translate(-1px, -1px);
+    transition-duration: 90ms;
+  }
+}
+
+@utility btn-pixel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 0.8rem 1.6rem;
+  border: 2px solid oklch(0.14 0.04 265);
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  box-shadow:
+    0 4px 0 0 oklch(0.42 0.13 145),
+    0 4px 0 0 oklch(0.42 0.13 145 / 0%);
+  transition:
+    transform 90ms steps(2, end),
+    box-shadow 200ms var(--ease-out-expo),
+    filter 160ms ease;
+  &:hover {
+    filter: brightness(1.08);
+    box-shadow:
+      0 4px 0 0 oklch(0.42 0.13 145),
+      0 10px 26px -10px oklch(0.72 0.19 143 / 65%);
+  }
+  &:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 0 oklch(0.42 0.13 145);
+  }
+}
+
+@utility btn-pixel-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 0.8rem 1.6rem;
+  border: 2px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-foreground);
+  box-shadow: 0 4px 0 0 oklch(0.16 0.04 265);
+  transition:
+    transform 90ms steps(2, end),
+    box-shadow 200ms var(--ease-out-expo),
+    border-color 200ms ease,
+    color 200ms ease;
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    box-shadow:
+      0 4px 0 0 oklch(0.16 0.04 265),
+      0 10px 24px -12px oklch(0.84 0.16 88 / 45%);
+  }
+  &:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 0 oklch(0.16 0.04 265);
+  }
+}
+
+@utility text-gradient-gold {
+  background: linear-gradient(180deg, oklch(0.95 0.11 95), oklch(0.78 0.17 72));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility scanlines {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      oklch(0 0 0 / 0%) 0px,
+      oklch(0 0 0 / 0%) 2px,
+      oklch(0 0 0 / 10%) 3px,
+      oklch(0 0 0 / 10%) 4px
+    );
+  }
+}
+
+@utility grid-fade {
+  background-image:
+    linear-gradient(to right, oklch(1 0 0 / 4%) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(1 0 0 / 4%) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black 0%, transparent 75%);
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translateX(-10%);
+  }
+  to {
+    transform: translateX(110%);
+  }
+}
+
+@keyframes bob-step {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes coin-spin {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0.2);
+  }
+}
+
+@utility anim-float {
+  animation: float-soft 5s ease-in-out infinite;
+}
+
+@utility anim-bob {
+  animation: bob-step 1.4s steps(4, end) infinite;
+}
+
+@utility anim-coin {
+  animation: coin-spin 2.4s steps(6, end) infinite;
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(22px) scale(0.985);
+  transition:
+    opacity 700ms var(--ease-out-expo),
+    transform 700ms var(--ease-out-expo);
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Directional siblings of .reveal, for content that should slide in from a side
+   (e.g. paired left/right panels) instead of rising from below. */
+@utility reveal-left {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition:
+    opacity 700ms var(--ease-out-expo),
+    transform 700ms var(--ease-out-expo);
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@utility reveal-right {
+  opacity: 0;
+  transform: translateX(28px);
+  transition:
+    opacity 700ms var(--ease-out-expo),
+    transform 700ms var(--ease-out-expo);
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Punchier pop for small, discrete elements (badges, chips, single stat tiles). */
+@utility reveal-scale {
+  opacity: 0;
+  transform: scale(0.88);
+  transition:
+    opacity 520ms var(--ease-spring),
+    transform 520ms var(--ease-spring);
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ---- Extra utilities added for the interactive feature showcases ---- */
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.72 0.19 143 / 45%);
+  }
+  50% {
+    box-shadow: 0 0 0 6px oklch(0.72 0.19 143 / 0%);
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-glow {
+  0% {
+    background-position: -120% 0;
+  }
+  100% {
+    background-position: 220% 0;
+  }
+}
+
+@utility anim-spin-slow {
+  animation: spin-slow 9s linear infinite;
+}
+
+@utility anim-pulse-glow {
+  animation: pulse-glow 2.2s ease-in-out infinite;
+}
+
+@utility anim-pop-in {
+  animation: pop-in 320ms cubic-bezier(0.2, 0.8, 0.3, 1.3) both;
+}
+
+@utility anim-twinkle {
+  animation: twinkle 2.4s ease-in-out infinite;
+}
+
+/* Tab / accordion chevron and panel transitions, shared across interactive widgets */
+@utility chevron-rotate {
+  transition: transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  &[data-open="true"] {
+    transform: rotate(180deg);
+  }
+}
+
+@utility accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  & > div {
+    overflow: hidden;
+  }
+  &[data-open="true"] {
+    grid-template-rows: 1fr;
+  }
+}
+
+@utility tab-underline {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: -2px;
+    height: 2px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  &[data-active="true"]::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Day/night toggle track */
+@utility cycle-track {
+  position: relative;
+  transition: background 420ms ease;
+}
+
+@utility cycle-thumb {
+  transition:
+    transform 420ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 420ms ease;
+}
+
+/* Skeleton shimmer used sparingly on stat bars */
+@utility shimmer {
+  background-image: linear-gradient(
+    100deg,
+    transparent 30%,
+    oklch(1 0 0 / 12%) 45%,
+    oklch(1 0 0 / 12%) 55%,
+    transparent 70%
+  );
+  background-size: 250% 100%;
+  animation: slide-glow 2.8s ease-in-out infinite;
+}
+
+/* ---- Premium micro-interaction layer ---- */
+
+/* Cursor-tracked glow used on feature cards and panels. Pair with a small onMouseMove
+   handler that sets --mx / --my (see src/lib/useSpotlight.ts) — CSS-only otherwise. */
+@utility spotlight {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 500ms var(--ease-out-soft);
+    background: radial-gradient(
+      260px circle at var(--mx, 50%) var(--my, 50%),
+      oklch(0.72 0.19 143 / 16%),
+      transparent 72%
+    );
+  }
+  &:hover::before {
+    opacity: 1;
+  }
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Base transition for elements whose transform is driven from JS (see Magnetic.tsx). */
+@utility magnetic {
+  transition: transform 450ms var(--ease-out-expo);
+  will-change: transform;
+}
+
+/* Thin bar pinned to the top of the header, filled by scroll progress. */
+@utility scroll-progress {
+  transition: width 120ms linear;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+
+/* Sliding pill behind the active option in a two/three-way segmented toggle. */
+@utility segment-thumb {
+  transition:
+    transform 340ms var(--ease-spring),
+    width 340ms var(--ease-spring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
