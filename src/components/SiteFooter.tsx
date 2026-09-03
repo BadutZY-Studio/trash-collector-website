@@ -28,8 +28,8 @@ const socialLinks = [
   // { label: "Instagram", href: "https://www.instagram.com/rzky.mp_36", Icon: IconInstagram },
   // { label: "X", href: "https://x.com/BadutZYY_", Icon: IconX },
   // { label: "TikTok", href: "https://www.tiktok.com/@badutzy._", Icon: IconTiktok },
-  { label: "GitHub", href: "https://github.com/BadutZY", Icon: IconGithub },
-  { label: "Website", href: "https://badutzy.vercel.app/", Icon: IconWorld },
+  { label: "GitHub", href: "https://github.com/BadutZY-Studio", Icon: IconGithub },
+  { label: "Website", href: "https://badutzy-studio.vercel.app/", Icon: IconWorld },
 ] as const;
 
 export function SiteFooter() {
