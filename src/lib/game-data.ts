@@ -120,18 +120,16 @@ import pRstick from "@/assets/game/controller/ps/rstick.png";
 export const GAME = {
   name: "Trash Collector Game",
   tagline: "2D pixel platformer built purely with Java",
-  // Follows the latest entry in `changelog` below — update together when adding a new release.
   version: "2.3.0",
   java: "Java 17",
   buildTool: "Gradle",
-  // Current official distribution: portable .zip (jpackage app-image) for Windows, no installer.
   platforms: "Windows",
   resolution: "16:9",
+  linkDownload: "https://github.com/BadutZY-Studio/trash-collector-game/releases/download/TrashCollectorGame-v2.3.0/TrashCollectorGame-v2.3.0.zip"
 };
 
 export const art = {
   logo,
-  /** High-resolution 256×256 icon — master source from `logo`, used for large displays such as the hero /trash. */
   logoLarge: logo256,
   coin,
   bin,

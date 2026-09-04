@@ -22,12 +22,7 @@ const footerLinks = [
   { to: "/download", label: "Download" },
 ] as const;
 
-// TODO: replace "#" with BadutZY's real account/social media URL.
 const socialLinks = [
-  // { label: "YouTube", href: "https://www.youtube.com/@badutzy", Icon: IconYoutube },
-  // { label: "Instagram", href: "https://www.instagram.com/rzky.mp_36", Icon: IconInstagram },
-  // { label: "X", href: "https://x.com/BadutZYY_", Icon: IconX },
-  // { label: "TikTok", href: "https://www.tiktok.com/@badutzy._", Icon: IconTiktok },
   { label: "GitHub", href: "https://github.com/BadutZY-Studio", Icon: IconGithub },
   { label: "Website", href: "https://badutzy-studio.vercel.app/", Icon: IconWorld },
 ] as const;

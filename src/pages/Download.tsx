@@ -53,7 +53,7 @@ export default function Download() {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 type="button"
-                href="#"
+                href={GAME.linkDownload}
                 className="btn-pixel"
                 aria-live="polite"
               >
