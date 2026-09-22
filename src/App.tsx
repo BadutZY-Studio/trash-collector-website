@@ -10,7 +10,6 @@ import Controls from "@/pages/Controls";
 import Download from "@/pages/Download";
 import NotFound from "@/pages/NotFound";
 
-/** Resets scroll position on every route change (plain SPA has no built-in behavior for this). */
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {

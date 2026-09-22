@@ -2,10 +2,6 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { controllerBindings, controllerIcons } from "@/lib/game-data";
 import { useSpotlight } from "@/lib/useSpotlight";
 
-/**
- * Interactive Xbox / PlayStation icon-style switcher — mirrors the game's own
- * "Icon Style" controller setting, which forces button icons to a brand style.
- */
 export function ControllerShowcase() {
   const [style, setStyle] = useState<"xbox" | "ps">("xbox");
   const icons = controllerIcons[style];
@@ -13,9 +9,6 @@ export function ControllerShowcase() {
 
   const xboxRef = useRef<HTMLButtonElement>(null);
   const psRef = useRef<HTMLButtonElement>(null);
-  // Measured in px rather than assumed as a 50/50 split, since "Xbox" and
-  // "PlayStation" are very different lengths — the thumb must match each
-  // button's real rendered width, or it drifts off the text (see bug report).
   const [thumb, setThumb] = useState({ left: 0, width: 0 });
 
   useLayoutEffect(() => {
@@ -40,7 +33,6 @@ export function ControllerShowcase() {
         </div>
 
         <div className="pixel-box relative flex overflow-hidden !p-0" role="tablist" aria-label="Controller icon style">
-          {/* Sliding highlight behind the active option, instead of an instant color swap */}
           <span
             aria-hidden="true"
             className="segment-thumb absolute inset-y-0 left-0 bg-primary"

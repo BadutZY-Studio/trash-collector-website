@@ -26,7 +26,6 @@ export default function Gameplay() {
           </p>
         </Reveal>
 
-        {/* World creation options */}
         <section className="mt-14">
           <div className="flex items-center gap-3">
             <IconDice width={22} height={22} className="text-primary" />

@@ -67,7 +67,6 @@ function SectionHeading({ kicker, title, desc }: { kicker: string; title: string
   );
 }
 
-/** Feature card with a cursor-tracked glow — its own component so each instance can hold its own pointer hook. */
 function FeatureCard({ feature }: { feature: (typeof features)[number] }) {
   const { ref, onMouseMove } = useSpotlight<HTMLAnchorElement>();
   return (

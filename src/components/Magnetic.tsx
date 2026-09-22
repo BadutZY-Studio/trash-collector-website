@@ -1,10 +1,5 @@
 import { useRef, type MouseEvent, type ReactNode } from "react";
 
-/**
- * Wraps a button/link with a subtle magnetic pull toward the cursor — a small,
- * deliberate micro-interaction (not decoration on every element) reserved for the
- * page's primary calls to action. Resets smoothly on mouse leave.
- */
 export function Magnetic({
   children,
   strength = 0.3,

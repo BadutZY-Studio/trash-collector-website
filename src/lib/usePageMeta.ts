@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 
-/** Sets document title + meta description for the current page (replaces TanStack Start's head()). */
 export function usePageMeta(title: string, description?: string) {
   useEffect(() => {
     const prevTitle = document.title;

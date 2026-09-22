@@ -1,7 +1,3 @@
-// Central data file for the whole site. Every figure here is pulled from the
-// actual Trash Collector Game (README, source comments, and in-game values) so
-// the marketing site never drifts from what the game really does.
-
 import logo from "@/assets/game/logo.png";
 import logo256 from "@/assets/game/logo_256.png";
 import coin from "@/assets/game/coin.png";

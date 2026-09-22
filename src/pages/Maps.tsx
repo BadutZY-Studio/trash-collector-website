@@ -30,7 +30,6 @@ export default function Maps() {
           </p>
         </Reveal>
 
-        {/* Interactive biome picker */}
         <Reveal className="pixel-box mt-10 overflow-hidden !p-0">
           <div className="flex flex-wrap border-b border-border" role="tablist" aria-label="Biome selection">
             {maps.map((m) => (
@@ -70,7 +69,6 @@ export default function Maps() {
           </div>
         </Reveal>
 
-        {/* Full list of all biomes */}
         <div className="mt-14 space-y-6">
           {maps.map((m, i) => (
             <Reveal key={m.id} delay={i * 60} className="pixel-box overflow-hidden">

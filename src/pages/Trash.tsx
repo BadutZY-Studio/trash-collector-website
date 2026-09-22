@@ -32,7 +32,6 @@ export default function Trash() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <main className="mx-auto max-w-6xl px-5 pt-14">
-        {/* Hero */}
         <div className="grid items-center gap-8 md:grid-cols-[1.3fr_1fr]">
           <Reveal>
             <span className="font-mono text-[11px] tracking-[0.25em] text-primary uppercase">Encyclopedia</span>
@@ -67,12 +66,10 @@ export default function Trash() {
           </Reveal>
         </div>
 
-        {/* Warning-stripe themed divider, made from the game's actual boundary tile */}
         <Reveal className="mt-12 h-6 w-full overflow-hidden border-y border-border" aria-hidden="true">
           <div className="h-full w-full" style={{ backgroundImage: `url(${art.boundary})`, backgroundSize: "24px 24px" }} />
         </Reveal>
 
-        {/* Filter */}
         <Reveal className="mt-10 flex flex-wrap items-center gap-3">
           {(
             [
@@ -101,7 +98,6 @@ export default function Trash() {
           </span>
         </Reveal>
 
-        {/* Gallery grid */}
         <div className="mt-6 grid grid-cols-2 gap-4">
           {filtered.map((t, i) => (
             <Reveal key={t.id} delay={(i % 2) * 60} className="pixel-box pixel-box-lift group p-5">
@@ -129,7 +125,6 @@ export default function Trash() {
           ))}
         </div>
 
-        {/* Golden Trash — special card */}
         <Reveal className="pixel-box scanlines relative mt-10 overflow-hidden p-6 md:p-8">
           <div
             className="pointer-events-none absolute -top-10 -right-10 h-40 w-40 rounded-full opacity-30 blur-2xl"
@@ -157,7 +152,6 @@ export default function Trash() {
           </div>
         </Reveal>
 
-        {/* CTA */}
         <Reveal className="pixel-box scanlines relative mt-16 overflow-hidden p-8 text-center md:p-12">
           <div
             className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-14 opacity-50"

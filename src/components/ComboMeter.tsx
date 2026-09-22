@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { comboChain } from "@/lib/game-data";
 import { useSpotlight } from "@/lib/useSpotlight";
 
-/** Animated bar chart that steps through the combo chain automatically, echoing the in-game combo meter. */
 export function ComboMeter() {
   const [active, setActive] = useState(0);
   const { ref, onMouseMove } = useSpotlight<HTMLDivElement>();

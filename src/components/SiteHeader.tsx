@@ -31,12 +31,6 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Auto-close the mobile menu the moment the page scrolls, instead of trying to lock
-  // background scrolling. Locking scroll (e.g. via body { overflow: hidden } or position: fixed)
-  // sounds nice but resets window.scrollY as a side effect in most browsers — which made the
-  // header's "scrolled" background flicker transparent while the menu was open, and made the
-  // page visibly flash back to the top when closing it. Closing on scroll avoids touching the
-  // document's scroll position entirely, so none of that ever happens.
   useEffect(() => {
     if (!open) return;
     const closeOnScroll = () => setOpen(false);
@@ -44,9 +38,6 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", closeOnScroll);
   }, [open]);
 
-  // Measure the real height of the menu's content (nav links + button, including its bottom
-  // shadow) so the panel's max-height always matches exactly — nothing gets clipped, and it
-  // still animates smoothly since we transition max-height between 0 and this measured value.
   useLayoutEffect(() => {
     const node = panelContentRef.current;
     if (!node) return;

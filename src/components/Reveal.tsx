@@ -18,7 +18,6 @@ export function Reveal({
   delay?: number;
   className?: string;
   as?: "div" | "section" | "li" | "article";
-  /** Direction/style of the entrance animation. Defaults to "up" (rise + soften into focus). */
   variant?: keyof typeof VARIANT_CLASS;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
