@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Reveal } from "@/components/Reveal";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Accordion } from "@/components/Accordion";
-import { IconArrowRight, IconCheck, IconDownload, IconMonitor } from "@/components/icons";
+import { IconCheck, IconDownload, IconGithub, IconMonitor } from "@/components/icons";
 import { art, faq, GAME } from "@/lib/game-data";
 import { usePageMeta } from "@/lib/usePageMeta";
 
 const zipFileName = "TrashCollectorGame-v2.3.0.zip";
 const exeFileName = "TrashCollectorGame.exe";
+const reportBugLink = "https://github.com/BadutZY-Studio/trash-collector-game/issues";
 
 const requirements = [
   { label: "Platform", value: "Windows 10 / 11" },
@@ -59,6 +59,15 @@ export default function Download() {
               >
                 <IconDownload width={18} height={18} />
                 {started ? "Coming Soon!" : `Download v${GAME.version} (.zip)`}
+              </a>
+              <a
+                href={reportBugLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-pixel-ghost"
+              >
+                <IconGithub width={18} height={18} />
+                Report Bug
               </a>
               <span className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
                 {zipFileName}
@@ -132,12 +141,6 @@ export default function Download() {
           <p className="mt-2 text-sm text-muted-foreground">
             Have feedback or found a bug? This project keeps growing with every version.
           </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Link to="/controls" className="btn-pixel-ghost !text-sm">
-              Report a Bug or Suggest an Update
-              <IconArrowRight width={16} height={16} />
-            </Link>
-          </div>
         </Reveal>
       </main>
       <SiteFooter />
