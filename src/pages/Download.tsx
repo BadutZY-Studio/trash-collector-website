@@ -9,7 +9,6 @@ import { usePageMeta } from "@/lib/usePageMeta";
 
 const zipFileName = "TrashCollectorGame-v2.3.0.zip";
 const exeFileName = "TrashCollectorGame.exe";
-const reportBugLink = "https://github.com/BadutZY-Studio/trash-collector-game/issues";
 
 const requirements = [
   { label: "Platform", value: "Windows 10 / 11" },
@@ -61,7 +60,7 @@ export default function Download() {
                 {started ? "Coming Soon!" : `Download v${GAME.version} (.zip)`}
               </a>
               <a
-                href={reportBugLink}
+                href={GAME.linkReportIssue}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-pixel-ghost"

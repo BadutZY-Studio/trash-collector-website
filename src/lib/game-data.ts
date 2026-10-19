@@ -121,7 +121,8 @@ export const GAME = {
   buildTool: "Gradle",
   platforms: "Windows",
   resolution: "16:9",
-  linkDownload: "https://github.com/BadutZY-Studio/trash-collector-game/releases/download/TrashCollectorGame-v2.3.0/TrashCollectorGame-v2.3.0.zip"
+  linkDownload: "https://github.com/BadutZY-Studio/trash-collector-game/releases/download/TrashCollectorGame-v2.3.0/TrashCollectorGame-v2.3.0.zip",
+  linkReportIssue: "https://github.com/BadutZY-Studio/trash-collector-game/issues"
 };
 
 export const art = {

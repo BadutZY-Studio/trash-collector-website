@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { art, GAME, goldenTrash, stats, trashTypes } from "@/lib/game-data";
-import { IconArrowRight, IconDownload, IconMoon, IconPlay, IconSun } from "@/components/icons";
+import { IconArrowRight, IconDownload, IconGithub, IconMoon, IconPlay, IconSun } from "@/components/icons";
 import { Magnetic } from "@/components/Magnetic";
 import { useSpotlight } from "@/lib/useSpotlight";
 
@@ -165,6 +165,17 @@ export function Hero() {
                 <IconPlay width={18} height={18} />
                 View World
               </Link>
+            </Magnetic>
+            <Magnetic strength={0.25}>
+              <a
+                href={GAME.linkReportIssue}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-pixel-ghost"
+              >
+                <IconGithub width={18} height={18} />
+                Report Bug
+              </a>
             </Magnetic>
           </div>
 

@@ -9,6 +9,7 @@ import {
   IconArrowRight,
   IconCoinStack,
   IconGamepad,
+  IconGithub,
   IconLayers,
   IconMoonSun,
   IconSave,
@@ -300,6 +301,17 @@ export default function Home() {
                 <Link to="/download" className="btn-pixel">
                   Download {GAME.name}
                 </Link>
+              </Magnetic>
+              <Magnetic strength={0.22}>
+                <a
+                  href={GAME.linkReportIssue}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-pixel-ghost"
+                >
+                  <IconGithub width={18} height={18} />
+                  Report Bug
+                </a>
               </Magnetic>
             </div>
           </Reveal>
